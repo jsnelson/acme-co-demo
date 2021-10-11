@@ -8,13 +8,7 @@ app.use(express.json());
 
 const { Pool } = require('pg');
 
-const pool = new Pool({
-    database: "acme",
-    user: "jnelson27",
-    password: "#^+1&ZPF!(wVJyQsuWu>DE1mxEI35p:e",
-    host: "ls-fd2790a2b8d01041ca103fba6684c1d6126c9572.cnh9rxbsnfcq.us-east-1.rds.amazonaws.com",
-    port: 5432
-});
+
 
 app.get("/config", async (request, response) => {
     const statusOptions = await pool.query(`
