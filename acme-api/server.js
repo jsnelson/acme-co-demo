@@ -1,4 +1,5 @@
-const { request, response } = require('express');
+const nconf = require('nconf');
+nconf.env().file('./config.json');
 const express = require('express');
 const app = express();
 
@@ -7,7 +8,8 @@ app.use(helmet());
 app.use(express.json());
 
 const { Pool } = require('pg');
-
+const dbConfig = nconf.get("databaseConfig");
+const pool = new Pool(dbConfig);
 
 
 app.get("/config", async (request, response) => {
